@@ -1,1 +1,2 @@
 # ninja_demo
+gg
