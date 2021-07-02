@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer:20190610.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/apache-maven-3.6/apache-maven-3.6.1/repository/com/googlecode/owasp-java-html-sanitizer/owasp-java-html-sanitizer/20190610.1/owasp-java-html-sanitizer-20190610.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/Downloads/apache-maven-3.6/apache-maven-3.6.1/repository/com/googlecode/owasp-java-html-sanitizer/owasp-java-html-sanitizer/20190610.1/owasp-java-html-sanitizer-20190610.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Downloads/apache-maven-3.6/apache-maven-3.6.1/repository/com/googlecode/owasp-java-html-sanitizer/owasp-java-html-sanitizer/20190610.1/owasp-java-html-sanitizer-20190610.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,38 @@
+<#include "/mag/gaia/admin/views/layout/admin_layout.ftl.html" />
+<#macro title>AdminDashbard</#macro>
+<#macro body>
+<div class="col-sm-6 col-sm-offset-2">
+    <div class="card">
+        <div class="card-header">
+            AdminDashboard
+        </div>
+
+        <div class="card-body">
+            <#include "/mag/gaia/common/views/include/simple_notice.ftl.html" />
+            <hr />
+
+            <form method="post" action="/admin/addSmall/${categoryDto.id}">
+           <p>添加小类    <input type="text" name="smallCategoryName">
+                <input type="submit" value="submit"></p>
+            </form>
+            <table class="table table-sm">
+                <tr align="center">
+                    <th>smallCategoryName</th>
+                    <th>delete</th>
+                    <th>update</th>
+                </tr>
+                <#list page.items as small>
+                <tr align="center">
+                    <td>${small.smallCategoryName}</td>
+                    <td><a href="">${small.id}</a></td>
+                    <td><a href="">update</a></td>
+                </tr>
+            </#list>
+            </table>
+            <hr />
+            <#include "/mag/gaia/common/views/include/simple_pager.ftl.html" />
+            <hr />
+        </div>
+    </div>
+</div>
+</#macro>

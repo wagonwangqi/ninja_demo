@@ -1,0 +1,30 @@
+<#include "/mag/gaia/web/views/layout/mooc_layout.ftl.html" />
+<#macro title>mooc</#macro>
+<#macro body>
+<br>
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <#list page.items as course>
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img width="100%" height="225" src="${course.couPic}">
+                    <div class="card-body">
+                        <p class="card-text">${course.couDescription}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary"><a href="/courseIndex/${course.couId}">View</a></button>
+                            </div>
+                            <small class="text-muted">${course.couName}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </#list>
+    </div>
+
+</div>
+
+</div>
+<#include "/mag/gaia/common/views/include/simple_pager.ftl.html" />
+</#macro>

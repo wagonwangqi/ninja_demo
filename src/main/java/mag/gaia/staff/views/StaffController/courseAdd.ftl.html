@@ -1,0 +1,78 @@
+<#include "/mag/gaia/staff/views/layout/staff_layout.ftl.html" />
+<#macro title>AdminDashbard</#macro>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <script>
+        let jsonStr =null;
+        $(document).ready(function(){
+            $.ajax({
+                    url:"/getCategoryList",
+                    type:"POST",
+                    data:{
+                    },
+                    success:function (data) {
+                        jsonStr=data;
+                        let bigCategoryName =document.getElementById("bigCategory");
+                        for(let index in jsonStr.bigCategories){
+                            let option = document.createElement("option");
+                            option.innerHTML=jsonStr.bigCategories[index].bigCategoryName;
+                            option.value=jsonStr.bigCategories[index].bigCategoryName;
+                            bigCategoryName.appendChild(option);
+                        }
+                    },
+                    error:function () {
+                        console.log("failed");
+                        console.log(jsonStr1);
+
+                    }
+                });
+        });
+
+        function showSmallCategory(options) {
+            let selectedIndex=options.selectedIndex;
+            if(selectedIndex>0){
+                let smallCategories=jsonStr.bigCategories[selectedIndex-1].smallCategories;
+                let smallCategoryOptions=document.getElementById("smallCategory");
+                smallCategoryOptions.innerHTML="<option>请选择小类</option>"
+                for (let index in smallCategories){
+                    let option =document.createElement("option");
+                    option.innerHTML=smallCategories[index].smallCategoryName;
+                    option.value=smallCategories[index].smallCategoryName;
+                    smallCategoryOptions.appendChild(option);
+                }
+            }
+        }
+    </script>
+
+</head>
+<#macro body>
+<div class="col-sm-6 col-sm-offset-2">
+    <div class="card">
+        <div class="card-header">
+            添加课程
+        </div>
+        <div class="card-body">
+            <#include "/mag/gaia/common/views/include/simple_notice.ftl.html" />
+            <form method="post" enctype="multipart/form-data"  action="/staff/addCourse/${session.id}">
+                <p> 课程名&nbsp&nbsp&nbsp&nbsp <input type="text" name="couName" class="form-control"></p>
+                <p> 老师名 &nbsp&nbsp&nbsp&nbsp<input type="text" name="staName" class="form-control"></p>
+                <p> 课程简介&nbsp<input type="text" name="couDescription" class="form-control"></p>
+                <p>视频简介&nbsp<input type="file" name="upFileVideo" class="form-group"></p>
+                <p>图片封面&nbsp<input type="file" name="upFilePic" class="form-group"></p>
+                <p> <select id="bigCategory" name="bigCategory" class="form-control" onchange="showSmallCategory(this);">
+                    <option value="">请选择一级分类</option>
+                     </select>
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <select id="smallCategory" class="form-control" name="smallCategory">
+                    <option value="">请选择二级分类</option>
+                    </select></p>
+
+                <p align="left">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <input type="submit" value="提交"  class="btn btn-outline-primary">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <input type="reset" value="重置"  class="btn btn-outline-primary"></p>
+            </form>
+        </div>
+    </div>
+</div>
+</#macro>

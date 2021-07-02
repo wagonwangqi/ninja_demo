@@ -1,0 +1,22 @@
+<#include "/mag/gaia/admin/views/layout/admin_layout.ftl.html" />
+<#macro title>AdminDashbard</#macro>
+
+<#macro body>
+<div class="col-sm-6 col-sm-offset-2">
+    <div class="card">
+        <div class="card-header">
+            AdminDashboard
+        </div>
+        <div class="card-body">
+            <#include "/mag/gaia/common/views/include/simple_notice.ftl.html" />
+            <hr />
+
+            <form method="post" action="/admin/addBig">
+                <input type="text" name="bigCategoryName">
+                <input type="submit" value="submit">
+            </form>
+            <hr />
+        </div>
+    </div>
+</div>
+</#macro>

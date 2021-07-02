@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a href="/" class="navbar-brand" style="margin-right: 100px;">
+        <span class="fs-5 fw-semibold">基于Java Web的慕课平台</span>
+    </a>
+
+    <form class="form-inline" method="post" action="/search">
+        <input class="form-control" type="text" name="name" placeholder="Search">
+        <button class="btn btn-success" type="submit" style="margin-right:10px">Search</button>
+        <#list listUtils.items as big>
+        <div class="btn-group" style="margin-right:10px">
+            <button type="button" class="btn btn-primary">
+                <a href="/bigMenu/${big.bigCategoryName}" class="text-white" style="text-decoration:none">${big.bigCategoryName}</a></button>
+            <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+                <span class="caret"></span>
+            </button>
+            <div class="dropdown-menu">
+                <#list big.smallCategories as small>
+                <a class="dropdown-item" href="/smallMenu/${small.smallCategoryName}">${small.smallCategoryName}</a>
+            </#list>
+            </div>
+        </div>
+         </#list>
+        <#if (session.id)??>
+        <div class="btn-group " style="margin-left:430px">
+            <button type="button" class="btn btn-success">
+                <a href="/" class="text-white" style="text-decoration:none">Me</a></a></button>
+            <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+                <span class="caret"></span>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/logout">logout</a>
+                <a class="dropdown-item" href="#">edit password</a>
+                <a class="dropdown-item" href="#">My Info</a>
+            </div>
+        </div>
+        <#else>
+        <div class="btn-group " style="margin-left:400px">
+            <button type="button" class="btn btn-success"><a href="/login" class="text-white" style="text-decoration:none">login</a></a></button>
+            <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+                <span class="caret"></span>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">forget</a>
+                <a class="dropdown-item" href="#">register</a>
+            </div>
+        </div>
+         </#if>
+    </form>
+
+</nav>

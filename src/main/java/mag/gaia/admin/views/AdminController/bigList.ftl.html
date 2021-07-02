@@ -1,0 +1,38 @@
+<#include "/mag/gaia/admin/views/layout/admin_layout.ftl.html" />
+<#macro title>AdminDashbard</#macro>
+
+<#macro body>
+<div class="col-sm-6 col-sm-offset-2">
+    <div class="card">
+        <div class="card-header">
+            AdminDashboard
+        </div>
+        <div class="card-body">
+            <#include "/mag/gaia/common/views/include/simple_notice.ftl.html" />
+            <hr />
+
+            <form method="post" action="/admin/addBig">
+                <p>添加大类  <input type="text" name="bigCategoryName">  <input type="submit" value="submit"></p>
+            </form>
+            <table class="table table-sm">
+            <tr align="center">
+                <th>大类名称</th>
+                <th>查看小类</th>
+                <th>删除</th>
+                <th>更新</th>
+            </tr>
+                <#list page.items as big>
+                <tr align="center">
+                    <td>${big.bigCategoryName}</td>
+                    <td><a href="/admin/viewSmall/${big.id}">查看</a> </td>
+                    <td><a href="?bigId=${big.id}">删除</a></td>
+                    <td><a href="/staff/update/${big.id}">更新</a></td>
+                </tr>
+                </#list>
+            </table>
+            <hr />
+            <#include "/mag/gaia/common/views/include/simple_pager.ftl.html" />
+        </div>
+    </div>
+</div>
+</#macro>

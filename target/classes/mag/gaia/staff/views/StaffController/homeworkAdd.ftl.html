@@ -1,0 +1,27 @@
+
+<#include "/mag/gaia/staff/views/layout/staff_layout.ftl.html" />
+<#macro title>AdminDashbard</#macro>
+<#macro body>
+<div class="col-sm-6 col-sm-offset-2">
+    <div class="card">
+        <div class="card-header">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Library</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Data</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="card-body">
+            <#include "/mag/gaia/common/views/include/simple_notice.ftl.html" />
+            <form method="post" action="/addHomework/">
+               <p> 作业名字 <input type="text"></p>
+                <p>作业内容<input type="text"></p>
+                <p>开始时间 <input type="date"></p>
+                <p>截止时间<input type="date"></p>
+            </form>
+        </div>
+    </div>
+</div>
+</#macro>

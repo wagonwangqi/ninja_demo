@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh_CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+        <meta name="generator" content="Hugo 0.82.0">
+        <title><#if title?exists><@title/></#if></title>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://www.orchome.com/js/bootstrap/5.0.0-alpha1/popper.min.js"></script>
+        <script src="https://www.orchome.com/js/bootstrap/5.0.0-alpha1/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://www.orchome.com/css/bootstrap/5.0.0-alpha1/bootstrap.min.css">
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sidebars/">
+        <style>
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                user-select: none;
+            }
+
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+        </style>
+        <#if header?exists><@header/></#if>
+    </head>
+    <body>
+        <#include "web_header.ftl.html"/>
+        <#if body?exists><@body/></#if>
+    <script>
+        function collection() {
+            console.log($("#collectValue").val());
+            $("#collectButton").text("已收藏");
+            $("#collectButton").attr("disabled",true);
+            $.ajax({
+                    url:"/member/collection",
+                    type:"POST",
+                    data:{
+                        courseId:$("#courseId").val(),
+                        memberId:$("#memberId").val()
+
+                    },
+                    success:function (data) {
+                        if(data==200){
+                            console.log("已收藏")}
+                        else {
+                            console.log("收藏成功")
+                        }
+                    },
+                    error:function () {
+                        console.log("failed")
+                    }
+                }
+            );
+        }
+        function notice() {
+            tt = document.getElementById("note");
+            tt.style.visibility="visible";
+        }
+
+
+    </script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/assets/js/sidebars.js"></script>
+    <#if footer?exists><@footer/></#if>
+</body>
+</html>

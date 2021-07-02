@@ -1,0 +1,22 @@
+
+<#include "/mag/gaia/staff/views/layout/staff_layout.ftl.html" />
+<#macro title>AdminDashbard</#macro>
+<#macro body>
+<div class="col-sm-6 col-sm-offset-2">
+    <div class="card">
+        <div class="card-header">
+            编辑作业
+        </div>
+        <div class="card-body">
+            <#include "/mag/gaia/common/views/include/simple_notice.ftl.html" />
+            <form method="post" action="/staff/editHomework/${chapterId}/${session.id}">
+                <p> 作业名字 <input type="text" name="name"></p>
+                <p>作业内容<input type="text" name="content"></p>
+                <p>开始时间 <input type="date" name="created"></p>
+                <p> 截止时间 <input type="date" name="modified"></p>
+                <p><input type="submit"> <input type="reset"></p>
+            </form>
+        </div>
+    </div>
+</div>
+</#macro>
